@@ -340,3 +340,15 @@ class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     */
 
 }
+
+
+/*
+ 
+ 🎉  Congrats
+ 
+ 🚀  WDSideMenu (0.0.1) successfully published
+ 📅  February 19th, 06:13
+ 🌎  https://cocoapods.org/pods/WDSideMenu
+ 👍  Tell your friends!
+ 
+ */

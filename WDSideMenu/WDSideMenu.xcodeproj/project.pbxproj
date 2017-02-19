@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2E6F7E6E3D0A3F218B045F0 /* Pods_WDSideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344525581FD02C68CBBA054 /* Pods_WDSideMenu.framework */; };
 		F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */; };
 		F5A5B2DE1E58E8AF00E6CFE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2DC1E58E8AF00E6CFE2 /* Main.storyboard */; };
 		F5A5B2E31E58E8AF00E6CFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2E21E58E8AF00E6CFE2 /* Assets.xcassets */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7344525581FD02C68CBBA054 /* Pods_WDSideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WDSideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95DB360B25C27DD242F004A6 /* Pods-WDSideMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDSideMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDSideMenu/Pods-WDSideMenu.debug.xcconfig"; sourceTree = "<group>"; };
+		C706CE0994E58EC85888D46E /* Pods-WDSideMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDSideMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDSideMenu/Pods-WDSideMenu.release.xcconfig"; sourceTree = "<group>"; };
 		F5A5B2D51E58E8AF00E6CFE2 /* WDSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5A5B2DD1E58E8AF00E6CFE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2E6F7E6E3D0A3F218B045F0 /* Pods_WDSideMenu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E4CCCDA839237975484D6AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95DB360B25C27DD242F004A6 /* Pods-WDSideMenu.debug.xcconfig */,
+				C706CE0994E58EC85888D46E /* Pods-WDSideMenu.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D5CAE8FA17DE6AA1D8265706 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7344525581FD02C68CBBA054 /* Pods_WDSideMenu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5A5B2CC1E58E8AF00E6CFE2 = {
 			isa = PBXGroup;
 			children = (
 				F5A5B2D71E58E8AF00E6CFE2 /* WDSideMenu */,
 				F5A5B2D61E58E8AF00E6CFE2 /* Products */,
+				1E4CCCDA839237975484D6AB /* Pods */,
+				D5CAE8FA17DE6AA1D8265706 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5A5B2EA1E58E8AF00E6CFE2 /* Build configuration list for PBXNativeTarget "WDSideMenu" */;
 			buildPhases = (
+				0A7B113C66D8A8501402AA52 /* [CP] Check Pods Manifest.lock */,
 				F5A5B2D11E58E8AF00E6CFE2 /* Sources */,
 				F5A5B2D21E58E8AF00E6CFE2 /* Frameworks */,
 				F5A5B2D31E58E8AF00E6CFE2 /* Resources */,
+				D3C5ADF2CBF70D8559D2B5DC /* [CP] Embed Pods Frameworks */,
+				0CCF0ECC856C3A23AF557B54 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,6 +191,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A7B113C66D8A8501402AA52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0CCF0ECC856C3A23AF557B54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDSideMenu/Pods-WDSideMenu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3C5ADF2CBF70D8559D2B5DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDSideMenu/Pods-WDSideMenu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F5A5B2D11E58E8AF00E6CFE2 /* Sources */ = {
@@ -295,6 +370,7 @@
 		};
 		F5A5B2EB1E58E8AF00E6CFE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95DB360B25C27DD242F004A6 /* Pods-WDSideMenu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SWMG5MXUC3;
@@ -308,6 +384,7 @@
 		};
 		F5A5B2EC1E58E8AF00E6CFE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C706CE0994E58EC85888D46E /* Pods-WDSideMenu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SWMG5MXUC3;
