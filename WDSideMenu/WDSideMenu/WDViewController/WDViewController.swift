@@ -138,78 +138,80 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     @objc final private func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
-        let location = gestureRecognizer.location(in: self.view)
-        switch gestureRecognizer.state {
-        case .began:
-            originX = Double(location.x)
-            originalSideConstraint = Double(self.sideMenuOffset.constant)
-        case .changed:
-            if self.menuSide == SideMenuSide.LeftMenu
-            {
-                self.sideMenuOffset.constant = max(min(sizeMenuWidth, CGFloat(originalSideConstraint) + location.x - CGFloat(originX)),0.0)
-            }
-            else
-            {
-                self.sideMenuOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideConstraint) + CGFloat(originX) - location.x),0.0)
-            }
-            self.transformMainContentView()
-            self.view.layoutIfNeeded()
-        case .ended:
-            var show:Bool = false
-            if self.menuSide == SideMenuSide.LeftMenu
-            {
-                if CGFloat(originalSideConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
+        if let sideMenuOffset = self.sideMenuOffset {
+            let location = gestureRecognizer.location(in: self.view)
+            switch gestureRecognizer.state {
+            case .began:
+                originX = Double(location.x)
+                originalSideConstraint = Double(sideMenuOffset.constant)
+            case .changed:
+                if self.menuSide == SideMenuSide.LeftMenu
                 {
-                    self.sideMenuOffset.constant = 0.0
+                    sideMenuOffset.constant = max(min(sizeMenuWidth, CGFloat(originalSideConstraint) + location.x - CGFloat(originX)),0.0)
                 }
                 else
                 {
-                    self.sideMenuOffset.constant = sizeMenuWidth
-                    show = true
+                    sideMenuOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideConstraint) + CGFloat(originX) - location.x),0.0)
                 }
-            }
-            else
-            {
-                if CGFloat(-originalSideConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
-                {
-                    self.sideMenuOffset.constant = 0.0
-                }
-                else
-                {
-                    self.sideMenuOffset.constant = -sizeMenuWidth
-                    show = true
-                }
-            }
-            UIView.animate(withDuration: 0.3, animations: { 
-                self.view.layoutIfNeeded()
                 self.transformMainContentView()
-            }, completion: { finished in
-                if finished
+                self.view.layoutIfNeeded()
+            case .ended:
+                var show:Bool = false
+                if self.menuSide == SideMenuSide.LeftMenu
                 {
-                    if let sideMenuDelegate = self.sideMenuDelegate, let mainContentDelegate = self.mainContentDelegate
+                    if CGFloat(originalSideConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
                     {
-                        if show
-                        {
-                            if !self.sideMenuVisible
-                            {
-                                mainContentDelegate.sideViewDidShow!()
-                                sideMenuDelegate.sideViewDidShow!()
-                            }
-                        }
-                        else
-                        {
-                            if self.sideMenuVisible
-                            {
-                                sideMenuDelegate.sideViewDidHide!()
-                                mainContentDelegate.sideViewDidHide!()
-                            }
-                        }
+                        sideMenuOffset.constant = 0.0
                     }
-                    self.sideMenuVisible = show
+                    else
+                    {
+                        sideMenuOffset.constant = sizeMenuWidth
+                        show = true
+                    }
                 }
-            })
-        default:
-            print("Do nothing")
+                else
+                {
+                    if CGFloat(-originalSideConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
+                    {
+                        sideMenuOffset.constant = 0.0
+                    }
+                    else
+                    {
+                        sideMenuOffset.constant = -sizeMenuWidth
+                        show = true
+                    }
+                }
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.layoutIfNeeded()
+                    self.transformMainContentView()
+                }, completion: { finished in
+                    if finished
+                    {
+                        if let sideMenuDelegate = self.sideMenuDelegate, let mainContentDelegate = self.mainContentDelegate
+                        {
+                            if show
+                            {
+                                if !self.sideMenuVisible
+                                {
+                                    mainContentDelegate.sideViewDidShow!()
+                                    sideMenuDelegate.sideViewDidShow!()
+                                }
+                            }
+                            else
+                            {
+                                if self.sideMenuVisible
+                                {
+                                    sideMenuDelegate.sideViewDidHide!()
+                                    mainContentDelegate.sideViewDidHide!()
+                                }
+                            }
+                        }
+                        self.sideMenuVisible = show
+                    }
+                })
+            default:
+                print("Do nothing")
+            }
         }
     }
     
