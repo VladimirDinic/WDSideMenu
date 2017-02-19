@@ -13,12 +13,12 @@ private class Constants: NSObject {
     static let SCREEN_HEIGHT:CGFloat = UIScreen.main.bounds.size.height
 }
 
-@objc protocol WDSideMenuDelegate{
+@objc public protocol WDSideMenuDelegate{
     @objc optional func sideViewDidShow()
     @objc optional func sideViewDidHide()
 }
 
-enum SideMenuSide {
+public enum SideMenuSide {
     case LeftMenu
     case RightMenu
 }
@@ -37,17 +37,17 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     private var mainView:UIView?
     private var sideMenuOffset: NSLayoutConstraint!
     
-    var sizeMenuWidth:CGFloat = Constants.SCREEN_WIDTH * 0.67
+    open var sizeMenuWidth:CGFloat = Constants.SCREEN_WIDTH * 0.67
     
-    var mainContentDelegate:WDSideMenuDelegate! = nil
-    var sideMenuDelegate:WDSideMenuDelegate! = nil
+    open var mainContentDelegate:WDSideMenuDelegate! = nil
+    open var sideMenuDelegate:WDSideMenuDelegate! = nil
     
-    var menuSide:SideMenuSide = .LeftMenu
+    open var menuSide:SideMenuSide = .LeftMenu
     
-    var resizeMainContentView:Bool = false
-    var scaleFactor:CGFloat = 1.0
+    open var resizeMainContentView:Bool = false
+    open var scaleFactor:CGFloat = 1.0
     
-    func setupParameters()
+    open func setupParameters()
     {
         
     }
@@ -84,12 +84,12 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         scaleFactor = (Constants.SCREEN_WIDTH - sizeMenuWidth)/Constants.SCREEN_WIDTH
     }
     
-    func getMainViewController() -> UIViewController?
+    open func getMainViewController() -> UIViewController?
     {
         return nil
     }
     
-    func getSideMenuViewController() -> UIViewController?
+    open func getSideMenuViewController() -> UIViewController?
     {
         return nil
     }
