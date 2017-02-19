@@ -14,7 +14,6 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setLeftButton(image: #imageLiteral(resourceName: "menuIcon"))
         self.interactivePopGestureRecognizer?.isEnabled = false
     }
 
@@ -37,12 +36,6 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    func setLeftButton(image:UIImage)
-    {
-        let barButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showMenuOrGoBack))
-        self.navigationBar.topItem?.leftBarButtonItem = barButton
     }
     
     func showMenuOrGoBack()

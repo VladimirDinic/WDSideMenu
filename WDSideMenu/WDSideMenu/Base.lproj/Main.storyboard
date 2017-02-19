@@ -89,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="918" y="-331"/>
         </scene>
-        <!--View Controller-->
+        <!--Sample View Controller-->
         <scene sceneID="wog-nN-XEa">
             <objects>
-                <viewController storyboardIdentifier="Page0" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R0g-vg-CcM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page0" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R0g-vg-CcM" customClass="SampleViewController" customModule="WDSideMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NOj-6z-YPt"/>
                         <viewControllerLayoutGuide type="bottom" id="dJe-Jp-UfQ"/>
@@ -108,10 +108,10 @@
             </objects>
             <point key="canvasLocation" x="1697" y="-326"/>
         </scene>
-        <!--View Controller-->
+        <!--Sample View Controller-->
         <scene sceneID="7oZ-eU-jZx">
             <objects>
-                <viewController storyboardIdentifier="Page1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cf1-bR-siM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cf1-bR-siM" customClass="SampleViewController" customModule="WDSideMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7z0-pY-JhC"/>
                         <viewControllerLayoutGuide type="bottom" id="FXB-lN-vHK"/>
@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="2410" y="-326"/>
         </scene>
-        <!--View Controller-->
+        <!--Sample View Controller-->
         <scene sceneID="a8x-9O-pMm">
             <objects>
-                <viewController storyboardIdentifier="Page2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tUb-pe-0S9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Page2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tUb-pe-0S9" customClass="SampleViewController" customModule="WDSideMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="htu-vO-eE8"/>
                         <viewControllerLayoutGuide type="bottom" id="Rzc-IA-fBB"/>

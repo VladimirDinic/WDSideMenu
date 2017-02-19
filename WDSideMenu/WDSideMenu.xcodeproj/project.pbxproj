@@ -16,6 +16,8 @@
 		F5A5B2F51E58E96200E6CFE2 /* MyWDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B2F41E58E96200E6CFE2 /* MyWDViewController.swift */; };
 		F5A5B3061E58EC5500E6CFE2 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B3051E58EC5500E6CFE2 /* SideViewController.swift */; };
 		F5A5B3081E5928C300E6CFE2 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B3071E5928C300E6CFE2 /* MyNavigationController.swift */; };
+		F5A822731E5A562B00275964 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A822721E5A562B00275964 /* SampleViewController.swift */; };
+		F5A822761E5A5C7D00275964 /* SideMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A822751E5A5C7D00275964 /* SideMenuConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		F5A5B2F41E58E96200E6CFE2 /* MyWDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWDViewController.swift; sourceTree = "<group>"; };
 		F5A5B3051E58EC5500E6CFE2 /* SideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
 		F5A5B3071E5928C300E6CFE2 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		F5A822721E5A562B00275964 /* SampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		F5A822751E5A5C7D00275964 /* SideMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */,
+				F5A822741E5A5C6800275964 /* Config */,
 				F5A5B2ED1E58E91A00E6CFE2 /* WDViewController */,
 				F5A5B2F31E58E95A00E6CFE2 /* ViewControllers */,
 				F5A5B2F21E58E93300E6CFE2 /* Storyboard Files */,
@@ -117,8 +122,17 @@
 				F5A5B2F41E58E96200E6CFE2 /* MyWDViewController.swift */,
 				F5A5B3051E58EC5500E6CFE2 /* SideViewController.swift */,
 				F5A5B3071E5928C300E6CFE2 /* MyNavigationController.swift */,
+				F5A822721E5A562B00275964 /* SampleViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F5A822741E5A5C6800275964 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F5A822751E5A5C7D00275964 /* SideMenuConfiguration.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +261,11 @@
 			files = (
 				F5A5B3061E58EC5500E6CFE2 /* SideViewController.swift in Sources */,
 				F5A5B2F11E58E91A00E6CFE2 /* WDViewController.swift in Sources */,
+				F5A822731E5A562B00275964 /* SampleViewController.swift in Sources */,
 				F5A5B3081E5928C300E6CFE2 /* MyNavigationController.swift in Sources */,
 				F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */,
 				F5A5B2F51E58E96200E6CFE2 /* MyWDViewController.swift in Sources */,
+				F5A822761E5A5C7D00275964 /* SideMenuConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +392,7 @@
 				DEVELOPMENT_TEAM = SWMG5MXUC3;
 				INFOPLIST_FILE = WDSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirdinic.WDSideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -390,6 +407,7 @@
 				DEVELOPMENT_TEAM = SWMG5MXUC3;
 				INFOPLIST_FILE = WDSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirdinic.WDSideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

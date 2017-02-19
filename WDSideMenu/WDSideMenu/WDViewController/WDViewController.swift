@@ -21,6 +21,7 @@ private class Constants: NSObject {
 public enum SideMenuSide {
     case LeftMenu
     case RightMenu
+    case BottomMenu
 }
 
 open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -30,20 +31,22 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     private var tapGestureRecognizer: UITapGestureRecognizer?
     private var sideMenuVisible:Bool = false
     private var originX = 0.0
-    private var originalSideConstraint = 0.0
+    private var originY = 0.0
+    private var originalSideLeftConstraint = 0.0
+    private var originalSideTopConstraint = 0.0
     private var mainContentViewController:UIViewController?
     private var sideViewController:UIViewController?
     private var sideView:UIView?
     private var mainView:UIView?
-    private var sideMenuOffset: NSLayoutConstraint!
+    private var sideMenuLeftOffset: NSLayoutConstraint!
+    private var sideMenuTopOffset: NSLayoutConstraint!
+    
     
     open var sizeMenuWidth:CGFloat = Constants.SCREEN_WIDTH * 0.67
-    
+    open var sizeMenuHeight:CGFloat = Constants.SCREEN_HEIGHT * 0.67
     open var mainContentDelegate:WDSideMenuDelegate! = nil
     open var sideMenuDelegate:WDSideMenuDelegate! = nil
-    
     open var menuSide:SideMenuSide = .LeftMenu
-    
     open var resizeMainContentView:Bool = false
     open var scaleFactor:CGFloat = 1.0
     
@@ -138,49 +141,63 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     @objc final private func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
-        if let sideMenuOffset = self.sideMenuOffset {
+        if let sideMenuLeftOffset = self.sideMenuLeftOffset, let sideMenuTopOffset = self.sideMenuTopOffset {
             let location = gestureRecognizer.location(in: self.view)
             switch gestureRecognizer.state {
             case .began:
                 originX = Double(location.x)
-                originalSideConstraint = Double(sideMenuOffset.constant)
+                originY = Double(location.y)
+                originalSideLeftConstraint = Double(sideMenuLeftOffset.constant)
+                originalSideTopConstraint = Double(sideMenuTopOffset.constant)
             case .changed:
-                if self.menuSide == SideMenuSide.LeftMenu
+                switch menuSide
                 {
-                    sideMenuOffset.constant = max(min(sizeMenuWidth, CGFloat(originalSideConstraint) + location.x - CGFloat(originX)),0.0)
-                }
-                else
-                {
-                    sideMenuOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideConstraint) + CGFloat(originX) - location.x),0.0)
+                case .LeftMenu:
+                    sideMenuLeftOffset.constant = max(min(sizeMenuWidth, CGFloat(originalSideLeftConstraint) + location.x - CGFloat(originX)),0.0)
+                case .RightMenu:
+                    sideMenuLeftOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideLeftConstraint) + CGFloat(originX) - location.x),0.0)
+                case .BottomMenu:
+                    sideMenuTopOffset.constant = max(min(sizeMenuHeight, CGFloat(originalSideTopConstraint) + location.y - CGFloat(originY)),0.0)
                 }
                 self.transformMainContentView()
                 self.view.layoutIfNeeded()
             case .ended:
                 var show:Bool = false
-                if self.menuSide == SideMenuSide.LeftMenu
+                switch menuSide
                 {
-                    if CGFloat(originalSideConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
+                case .LeftMenu:
+                    if CGFloat(originalSideLeftConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
                     {
-                        sideMenuOffset.constant = 0.0
+                        sideMenuLeftOffset.constant = 0.0
                     }
                     else
                     {
-                        sideMenuOffset.constant = sizeMenuWidth
+                        sideMenuLeftOffset.constant = sizeMenuWidth
                         show = true
                     }
-                }
-                else
-                {
-                    if CGFloat(-originalSideConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
+                case .RightMenu:
+                    if CGFloat(-originalSideLeftConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
                     {
-                        sideMenuOffset.constant = 0.0
+                        sideMenuLeftOffset.constant = 0.0
                     }
                     else
                     {
-                        sideMenuOffset.constant = -sizeMenuWidth
+                        sideMenuLeftOffset.constant = -sizeMenuWidth
                         show = true
                     }
+                case .BottomMenu:
+                    if CGFloat(originalSideTopConstraint) + location.y - CGFloat(originY) < sizeMenuHeight * 0.5
+                    {
+                        sideMenuTopOffset.constant = 0.0
+                    }
+                    else
+                    {
+                        sideMenuTopOffset.constant = sizeMenuHeight
+                        show = true
+                    }
+
                 }
+
                 UIView.animate(withDuration: 0.3, animations: {
                     self.view.layoutIfNeeded()
                     self.transformMainContentView()
@@ -227,13 +244,13 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
             
             let width = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.width, multiplier: 1, constant: 0)
             let height = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
-            let centerY = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
-            self.sideMenuOffset = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+            self.sideMenuTopOffset = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+            self.sideMenuLeftOffset = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
             
             view.addConstraint(width)
             view.addConstraint(height)
-            view.addConstraint(self.sideMenuOffset)
-            view.addConstraint(centerY)
+            view.addConstraint(self.sideMenuLeftOffset)
+            view.addConstraint(self.sideMenuTopOffset)
             
             controller.didMove(toParentViewController: self)
         }
@@ -250,16 +267,19 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
             self.sideView = controller.view
             
             let width = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.width, multiplier: 1, constant: 0)
-            let bottomAllign = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-            let topAllign = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
+            var bottomAllign = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            var topAllign = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
             var positionRelativeToMainView: NSLayoutConstraint
-            if self.menuSide == SideMenuSide.LeftMenu
+            switch menuSide
             {
+            case .LeftMenu:
                 positionRelativeToMainView = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.mainView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-            }
-            else
-            {
+            case .RightMenu:
                 positionRelativeToMainView = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.mainView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            case .BottomMenu:
+                positionRelativeToMainView = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.centerX, relatedBy: NSLayoutRelation.equal, toItem: self.mainView, attribute: NSLayoutAttribute.centerX, multiplier: 1, constant: 0)
+                bottomAllign = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: self.mainView, attribute: NSLayoutAttribute.height, multiplier: 1, constant: 0)
+                topAllign = NSLayoutConstraint(item: controller.view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.mainView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
             }
             
             view.addConstraint(width)
@@ -280,10 +300,25 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         if let mainContentView = self.mainView
         {
-            let currentScaleFactor = 1.0 - fabs(self.sideMenuOffset.constant)/self.sizeMenuWidth * scaleFactor
-            let translationFactor = (1.0 - currentScaleFactor) * Constants.SCREEN_WIDTH * 0.5
+            var currentScaleFactor:CGFloat = 1.0
+            var translationFactor:CGFloat = 0.0
             var t = CGAffineTransform.identity
-            t = t.translatedBy(x: menuSide == .LeftMenu ? -translationFactor : translationFactor, y: 0)
+            switch menuSide
+            {
+            case .LeftMenu:
+                currentScaleFactor = 1.0 - fabs(self.sideMenuLeftOffset.constant)/self.sizeMenuWidth * scaleFactor
+                translationFactor = (1.0 - currentScaleFactor) * Constants.SCREEN_WIDTH * 0.5
+                t = t.translatedBy(x: -translationFactor, y: 0)
+            case .RightMenu:
+                currentScaleFactor = 1.0 - fabs(self.sideMenuLeftOffset.constant)/self.sizeMenuWidth * scaleFactor
+                translationFactor = (1.0 - currentScaleFactor) * Constants.SCREEN_WIDTH * 0.5
+                t = t.translatedBy(x: translationFactor, y: 0)
+            case .BottomMenu:
+                currentScaleFactor = 1.0 - fabs(self.sideMenuTopOffset.constant)/self.sizeMenuHeight * scaleFactor
+                translationFactor = (1.0 - currentScaleFactor) * Constants.SCREEN_HEIGHT * 0.5
+                t = t.translatedBy(x: 0, y: -translationFactor)
+            }
+            
             t = t.scaledBy(x: currentScaleFactor, y: currentScaleFactor)
             mainContentView.transform = t
         }
@@ -293,11 +328,20 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     {
         if !self.sideMenuVisible
         {
-            self.sideMenuOffset.constant = self.menuSide == .LeftMenu ? sizeMenuWidth : -sizeMenuWidth
+            switch menuSide
+            {
+            case .LeftMenu:
+                self.sideMenuLeftOffset.constant = sizeMenuWidth
+            case .RightMenu:
+                self.sideMenuLeftOffset.constant = -sizeMenuWidth
+            case .BottomMenu:
+                self.sideMenuTopOffset.constant = sizeMenuHeight
+            }
         }
         else
         {
-            self.sideMenuOffset.constant = 0
+            self.sideMenuLeftOffset.constant = 0
+            self.sideMenuTopOffset.constant = 0
         }
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
@@ -318,7 +362,15 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                         mainContentDelegate.sideViewDidHide!()
                     }
                 }
-                self.sideMenuVisible = self.sideMenuOffset.constant != 0
+                switch self.menuSide
+                {
+                case .LeftMenu:
+                    self.sideMenuVisible = self.sideMenuLeftOffset.constant != 0
+                case .RightMenu:
+                    self.sideMenuVisible = self.sideMenuLeftOffset.constant != 0
+                case .BottomMenu:
+                    self.sideMenuVisible = self.sideMenuTopOffset.constant != 0
+                }
                 self.mainView?.isUserInteractionEnabled = !(self.resizeMainContentView && self.sideMenuVisible)
             }
         })
@@ -342,15 +394,3 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     */
 
 }
-
-
-/*
- 
- 🎉  Congrats
- 
- 🚀  WDSideMenu (0.0.1) successfully published
- 📅  February 19th, 06:13
- 🌎  https://cocoapods.org/pods/WDSideMenu
- 👍  Tell your friends!
- 
- */
