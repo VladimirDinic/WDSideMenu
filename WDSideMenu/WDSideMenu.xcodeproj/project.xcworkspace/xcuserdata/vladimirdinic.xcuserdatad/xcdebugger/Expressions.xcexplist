@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "WDViewController.handleTap(UIPanGestureRecognizer) -&gt; ():WDViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "WDViewController.gestureRecognizer(UIGestureRecognizer, shouldRecognizeSimultaneouslyWith : UIGestureRecognizer) -&gt; Bool:WDViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "gestureRecognizer.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WDViewController.transformMainContentView() -&gt; ():WDViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.sideMenuOffset.constant">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WDViewController.(toggleSideMenu() -&gt; ()).(closure #2):WDViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "!(self.resizeMainContentView &amp;&amp; self.sideMenuVisible)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WDViewController.handleTap(UITapGestureRecognizer) -&gt; ():WDViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "gestureRecognizer.location(in:mainView)">
+            </PersistentString>
+            <PersistentString
+               value = "gestureRecognizer.state">
+            </PersistentString>
+            <PersistentString
+               value = "mainView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyNavigationController.setLeftButton(image : UIImage) -&gt; ():MyNavigationController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationItem.leftBarButtonItem">
+            </PersistentString>
+            <PersistentString
+               value = "self.navigationItem">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
