@@ -23,7 +23,7 @@ enum SideMenuSide {
     case RightMenu
 }
 
-class WDViewController: UIViewController, UIGestureRecognizerDelegate {
+public class WDViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private var mainViewIsTapped:Bool = false
     private var panGestureRecognizer: UIPanGestureRecognizer?
@@ -52,13 +52,13 @@ class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name(rawValue: "ShowMenu"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name(rawValue: "SelectItem"), object: nil)
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         
         if let mainView = self.mainView
         {
@@ -94,7 +94,7 @@ class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         return nil
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -323,7 +323,7 @@ class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
