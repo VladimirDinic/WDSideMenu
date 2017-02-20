@@ -35,42 +35,19 @@ class MyWDViewController: WDViewController {
         case .BottomMenu:
             sizeMenuHeight = sizeMenuHeightConfig
         }
+        sideMenuRelativePosition = sideMenuRelativePositionConfig
     }
 
     override func getMainViewController() -> UIViewController? {
-        switch menuSide
-        {
-        case .LeftMenu:
-            let navigation:MyNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController") as! MyNavigationController
-            self.mainContentDelegate = navigation
-            return navigation
-        case .RightMenu:
-            let navigation:MyNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController") as! MyNavigationController
-            self.mainContentDelegate = navigation
-            return navigation
-        case .BottomMenu:
-            let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideViewController") as! SideViewController
-            self.sideMenuDelegate = sideMenuViewController
-            return sideMenuViewController
-        }
+        let navigation:MyNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController") as! MyNavigationController
+        self.mainContentDelegate = navigation
+        return navigation
     }
     
     override func getSideMenuViewController() -> UIViewController? {
-        switch menuSide
-        {
-        case .LeftMenu:
-            let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideViewController") as! SideViewController
-            self.sideMenuDelegate = sideMenuViewController
-            return sideMenuViewController
-        case .RightMenu:
-            let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideViewController") as! SideViewController
-            self.sideMenuDelegate = sideMenuViewController
-            return sideMenuViewController
-        case .BottomMenu:
-            let navigation:MyNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController") as! MyNavigationController
-            self.mainContentDelegate = navigation
-            return navigation
-        }
+        let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideViewController") as! SideViewController
+        self.sideMenuDelegate = sideMenuViewController
+        return sideMenuViewController
     }
     
     
