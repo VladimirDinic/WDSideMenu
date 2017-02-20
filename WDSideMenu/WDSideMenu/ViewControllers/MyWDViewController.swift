@@ -41,6 +41,7 @@ class MyWDViewController: WDViewController {
     override func getMainViewController() -> UIViewController? {
         let navigation:MyNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController") as! MyNavigationController
         self.mainContentDelegate = navigation
+        navigation.wdSideView = self
         return navigation
     }
     

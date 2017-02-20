@@ -52,15 +52,28 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath)
-        cell.textLabel?.textColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
-        cell.textLabel?.text = "Page\(indexPath.row)"
+        let cell:MenuCell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath) as! MenuCell
+        cell.tintColor = UIColor(red: 0.0, green: 0.6, blue: 0.6, alpha: 1.0)
         cell.backgroundColor = UIColor.clear
+        switch indexPath.row
+        {
+        case 0:
+            cell.menuCellImage?.image = #imageLiteral(resourceName: "userIcon")
+            cell.menuCellLabel?.text = "My profile"
+        case 1:
+            cell.menuCellImage?.image = #imageLiteral(resourceName: "mapIcon")
+            cell.menuCellLabel?.text = "Show map"
+        case 2:
+            cell.menuCellImage?.image = #imageLiteral(resourceName: "termsAndConditionsIcon")
+            cell.menuCellLabel?.text = "Terms and Conditions"
+        default:
+            print("Do nothing")
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.size.width * 0.1
+        return Constants.SCREEN_WIDTH * 0.15
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

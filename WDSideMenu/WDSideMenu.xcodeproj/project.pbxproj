@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A2E6F7E6E3D0A3F218B045F0 /* Pods_WDSideMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7344525581FD02C68CBBA054 /* Pods_WDSideMenu.framework */; };
+		F56123901E5BA2BE0092B4FB /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F561238F1E5BA2BE0092B4FB /* MenuCell.swift */; };
+		F56123921E5BA6EC0092B4FB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56123911E5BA6EC0092B4FB /* MapKit.framework */; };
+		F56123941E5BAE210092B4FB /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */; };
+		F56123961E5BAE2B0092B4FB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123951E5BAE2B0092B4FB /* MapViewController.swift */; };
+		F56123981E5BAE390092B4FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123971E5BAE390092B4FB /* SettingsViewController.swift */; };
 		F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */; };
 		F5A5B2DE1E58E8AF00E6CFE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2DC1E58E8AF00E6CFE2 /* Main.storyboard */; };
 		F5A5B2E31E58E8AF00E6CFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2E21E58E8AF00E6CFE2 /* Assets.xcassets */; };
@@ -24,6 +29,11 @@
 		7344525581FD02C68CBBA054 /* Pods_WDSideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WDSideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95DB360B25C27DD242F004A6 /* Pods-WDSideMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDSideMenu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDSideMenu/Pods-WDSideMenu.debug.xcconfig"; sourceTree = "<group>"; };
 		C706CE0994E58EC85888D46E /* Pods-WDSideMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDSideMenu.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDSideMenu/Pods-WDSideMenu.release.xcconfig"; sourceTree = "<group>"; };
+		F561238F1E5BA2BE0092B4FB /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		F56123911E5BA6EC0092B4FB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		F56123951E5BAE2B0092B4FB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F56123971E5BAE390092B4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F5A5B2D51E58E8AF00E6CFE2 /* WDSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5A5B2DD1E58E8AF00E6CFE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56123921E5BA6EC0092B4FB /* MapKit.framework in Frameworks */,
 				A2E6F7E6E3D0A3F218B045F0 /* Pods_WDSideMenu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,9 +73,18 @@
 		D5CAE8FA17DE6AA1D8265706 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F56123911E5BA6EC0092B4FB /* MapKit.framework */,
 				7344525581FD02C68CBBA054 /* Pods_WDSideMenu.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F561238E1E5BA2AB0092B4FB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F561238F1E5BA2BE0092B4FB /* MenuCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F5A5B2CC1E58E8AF00E6CFE2 = {
@@ -92,6 +112,7 @@
 				F5A822741E5A5C6800275964 /* Config */,
 				F5A5B2ED1E58E91A00E6CFE2 /* WDViewController */,
 				F5A5B2F31E58E95A00E6CFE2 /* ViewControllers */,
+				F561238E1E5BA2AB0092B4FB /* Cells */,
 				F5A5B2F21E58E93300E6CFE2 /* Storyboard Files */,
 				F5A5B2E21E58E8AF00E6CFE2 /* Assets.xcassets */,
 				F5A5B2E71E58E8AF00E6CFE2 /* Info.plist */,
@@ -123,6 +144,9 @@
 				F5A5B3051E58EC5500E6CFE2 /* SideViewController.swift */,
 				F5A5B3071E5928C300E6CFE2 /* MyNavigationController.swift */,
 				F5A822721E5A562B00275964 /* SampleViewController.swift */,
+				F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */,
+				F56123951E5BAE2B0092B4FB /* MapViewController.swift */,
+				F56123971E5BAE390092B4FB /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -261,10 +285,14 @@
 			files = (
 				F5A5B3061E58EC5500E6CFE2 /* SideViewController.swift in Sources */,
 				F5A5B2F11E58E91A00E6CFE2 /* WDViewController.swift in Sources */,
+				F56123981E5BAE390092B4FB /* SettingsViewController.swift in Sources */,
 				F5A822731E5A562B00275964 /* SampleViewController.swift in Sources */,
+				F56123961E5BAE2B0092B4FB /* MapViewController.swift in Sources */,
 				F5A5B3081E5928C300E6CFE2 /* MyNavigationController.swift in Sources */,
+				F56123941E5BAE210092B4FB /* ProfilePageViewController.swift in Sources */,
 				F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */,
 				F5A5B2F51E58E96200E6CFE2 /* MyWDViewController.swift in Sources */,
+				F56123901E5BA2BE0092B4FB /* MenuCell.swift in Sources */,
 				F5A822761E5A5C7D00275964 /* SideMenuConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,16 +10,14 @@ import UIKit
 
 class SampleViewController: UIViewController {
 
+    @IBInspectable var headerTitle:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.setupNavigation()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +27,7 @@ class SampleViewController: UIViewController {
     
     func setupNavigation()
     {
+        self.navigationItem.title = headerTitle
         self.navigationItem.hidesBackButton = true
         var barButton:UIBarButtonItem? = nil
         if (self.navigationController?.viewControllers.count)! > 1
@@ -39,6 +38,7 @@ class SampleViewController: UIViewController {
         {
             barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menuIcon"), style: .plain, target: self, action: #selector(showMenuOrGoBack))
         }
+        barButton?.tintColor = UIColor(red: 0.0, green: 0.7, blue: 0.7, alpha: 1.0)
         switch menuSideConfig
         {
         case .LeftMenu:

@@ -8,7 +8,7 @@
 
 import UIKit
 
-private class Constants: NSObject {
+public class Constants: NSObject {
     static let SCREEN_WIDTH:CGFloat = UIScreen.main.bounds.size.width
     static let SCREEN_HEIGHT:CGFloat = UIScreen.main.bounds.size.height
 }
@@ -46,7 +46,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     private var sideMenuLeftOffset: NSLayoutConstraint!
     private var sideMenuTopOffset: NSLayoutConstraint!
     
-    
+    open var panGestureEnabled:Bool = true
     open var sideMenuRelativePosition:SideMenuRelativePosition = .StickedToMainView
     open var sizeMenuWidth:CGFloat = Constants.SCREEN_WIDTH * 0.67
     open var sizeMenuHeight:CGFloat = Constants.SCREEN_HEIGHT * 0.67
@@ -147,6 +147,11 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     @objc final private func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        
+        if !panGestureEnabled
+        {
+            return
+        }
         if let sideMenuLeftOffset = self.sideMenuLeftOffset, let sideMenuTopOffset = self.sideMenuTopOffset {
             let location = gestureRecognizer.location(in: self.view)
             switch gestureRecognizer.state {

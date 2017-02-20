@@ -10,6 +10,8 @@ import UIKit
 
 class MyNavigationController: UINavigationController, WDSideMenuDelegate {
 
+    var wdSideView:WDViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +33,12 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(openPage), name: NSNotification.Name(rawValue: "SelectItem"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disablePanGesture), name: NSNotification.Name(rawValue: "DisablePanGesture"), object: nil)
+    }
+    
+    func disablePanGesture(notification:Notification)
+    {
+        self.wdSideView?.panGestureEnabled = !((notification.userInfo?["DisablePanGesture"] as! NSNumber).boolValue)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -59,7 +67,7 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
     }
     
     func sideViewDidShow() {
-        
+        self.view.endEditing(true)
     }
     
     func sideViewDidHide() {
