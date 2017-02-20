@@ -24,7 +24,7 @@ class MyWDViewController: WDViewController {
     override func setupParameters() {
         resizeMainContentView = resizeMainContentViewConfig
         menuSide = menuSideConfig
-        scaleFactor = 0.5
+        scaleFactor = scaleFactorConfig
         
         switch menuSide
         {

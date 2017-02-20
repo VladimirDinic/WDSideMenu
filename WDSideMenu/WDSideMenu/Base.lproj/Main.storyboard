@@ -263,7 +263,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980392157" blue="0.68627450980392157" alpha="0.10225813356164383" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="7X2-Tk-vlz" firstAttribute="width" secondItem="rgl-GJ-ejK" secondAttribute="width" multiplier="0.9" id="2ld-Hx-e6S"/>
                             <constraint firstItem="nVw-lf-Tez" firstAttribute="centerX" secondItem="rgl-GJ-ejK" secondAttribute="centerX" id="8KU-BA-dwA"/>
@@ -316,7 +316,7 @@
                                 <rect key="frame" x="0.5" y="20" width="375" height="647"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.68627450980000004" alpha="0.1022581336" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4y5-nP-ILe" firstAttribute="width" secondItem="bUy-6b-s0x" secondAttribute="width" id="43y-Hv-1cZ"/>
                             <constraint firstItem="4y5-nP-ILe" firstAttribute="centerX" secondItem="bUy-6b-s0x" secondAttribute="centerX" id="YJe-wl-md8"/>
@@ -363,7 +363,7 @@ Usu diam partem elaboraret ei, ei velit cetero eum. Vivendo oporteat has ex, dic
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.68627450980000004" alpha="0.1022581336" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pwl-qZ-xiE" firstAttribute="width" secondItem="RbO-zz-taw" secondAttribute="width" multiplier="0.9" id="DGd-sI-WXk"/>
                             <constraint firstItem="pwl-qZ-xiE" firstAttribute="centerY" secondItem="RbO-zz-taw" secondAttribute="centerY" id="pej-R3-hhZ"/>
