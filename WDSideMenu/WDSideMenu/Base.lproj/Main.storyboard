@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,14 +39,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-an-SZe">
-                                <rect key="frame" x="112.5" y="20" width="262.5" height="647"/>
+                                <rect key="frame" x="75" y="20" width="300" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="a2m-Kv-N3U"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SideMenuCell" id="7rM-Ww-0lE">
-                                        <rect key="frame" x="0.0" y="28" width="263" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7rM-Ww-0lE" id="y9q-XY-Umc">
-                                            <rect key="frame" x="0.0" y="0.0" width="263" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -63,11 +65,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wcj-an-SZe" firstAttribute="top" secondItem="EY9-bh-bzz" secondAttribute="bottom" id="aXS-bY-p6Z"/>
-                            <constraint firstItem="Wcj-an-SZe" firstAttribute="width" secondItem="ZOx-N4-3cc" secondAttribute="width" multiplier="0.7" id="fne-3K-Zgv"/>
                             <constraint firstAttribute="trailing" secondItem="Wcj-an-SZe" secondAttribute="trailing" id="jYj-xL-uzm"/>
                             <constraint firstItem="Tqv-eO-ctF" firstAttribute="top" secondItem="Wcj-an-SZe" secondAttribute="bottom" id="nX0-7P-1e4"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableViewTrailingConstraint" destination="jYj-xL-uzm" id="Y2r-km-0ft"/>
+                        <outlet property="tableViewWidthConstraint" destination="a2m-Kv-N3U" id="ftD-Bh-Dvo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4nl-Z6-uOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

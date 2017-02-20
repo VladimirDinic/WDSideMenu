@@ -10,10 +10,31 @@ import UIKit
 
 class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewTrailingConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        switch menuSideConfig
+        {
+        case .LeftMenu:
+            self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
+            self.tableViewTrailingConstraint.constant = 0.0
+        case .RightMenu:
+            self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
+            self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig
+        case .BottomMenu:
+            self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
+            self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig
+        }
+        self.view.layoutIfNeeded()
     }
 
     override func didReceiveMemoryWarning() {

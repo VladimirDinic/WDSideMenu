@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-let menuSideConfig:SideMenuSide = .RightMenu
-let resizeMainContentViewConfig = true
+let menuSideConfig:SideMenuSide = .BottomMenu
+let resizeMainContentViewConfig = false
 let sizeMenuWidthConfig = UIScreen.main.bounds.size.width * 0.7     //this is valid for LeftMenu and RightMenu
 let sizeMenuHeightConfig = UIScreen.main.bounds.size.height * 0.7   //this is valid only for BottomMenu
 let scaleFactorConfig = 0.5
