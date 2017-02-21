@@ -38,7 +38,7 @@ class SampleViewController: UIViewController {
         {
             barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menuIcon"), style: .plain, target: self, action: #selector(showMenuOrGoBack))
         }
-        barButton?.tintColor = UIColor(red: 0.0, green: 0.7, blue: 0.7, alpha: 1.0)
+        barButton?.tintColor = UIColor(red: 0.0, green: 105.0/255.0, blue: 105.0/255.0, alpha: 1.0)
         switch menuSideConfig
         {
         case .LeftMenu:

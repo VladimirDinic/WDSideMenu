@@ -53,7 +53,7 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:MenuCell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath) as! MenuCell
-        cell.tintColor = UIColor(red: 0.0, green: 0.6, blue: 0.6, alpha: 1.0)
+        cell.tintColor = UIColor(red: 0.0, green: 105.0/255.0, blue: 105.0/255.0, alpha: 1.0)
         cell.backgroundColor = UIColor.clear
         switch indexPath.row
         {
