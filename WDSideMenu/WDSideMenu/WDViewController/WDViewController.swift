@@ -353,11 +353,13 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                 case .LeftMenu:
                     self.sideMenuLeftOffset = NSLayoutConstraint(item: self.sideView!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0)
                     view.addConstraint(self.sideMenuLeftOffset)
-                    view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+                    self.sideMenuTopOffset = NSLayoutConstraint(item: self.sideView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+                    view.addConstraint(self.sideMenuTopOffset)
                 case .RightMenu:
                     self.sideMenuLeftOffset = NSLayoutConstraint(item: self.sideView!, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0)
                     view.addConstraint(self.sideMenuLeftOffset)
-                    view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
+                    self.sideMenuTopOffset = NSLayoutConstraint(item: self.sideView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+                    view.addConstraint(self.sideMenuTopOffset)
                 case .BottomMenu:
                     self.sideMenuTopOffset = NSLayoutConstraint(item: self.sideView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
                     view.addConstraint(self.sideMenuTopOffset)
@@ -420,8 +422,14 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         else
         {
-            self.sideMenuLeftOffset.constant = 0
-            self.sideMenuTopOffset.constant = 0
+            if let sideLeftOffset = self.sideMenuLeftOffset
+            {
+                sideLeftOffset.constant = 0
+            }
+            if let sideTopOffset = self.sideMenuTopOffset
+            {
+                sideTopOffset.constant = 0
+            }
         }
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
