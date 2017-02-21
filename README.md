@@ -5,12 +5,15 @@
 
 Simple, customizable and effective side menu for iOS apps
 
-![GitHub Logo](/Docs/Images/LeftMenu.gif)
-
 # Features:
 * Two types of side menu:
- * Classic side menu
+ * Classic side menu<br>
+ ![GitHub Logo](/Docs/Images/LeftMenu.gif)
  * Side menu with resizable central (main) content
+* Side view can be:
+ * Sticked to main content
+ * Above main content <br>
+  ![GitHub Logo](/Docs/Images/LeftMenu2.gif)
 * Two ways to show / hide side menu:
  * Pan gesture 
  * Embedded method
