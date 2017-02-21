@@ -5,7 +5,7 @@
 
 Simple, customizable and effective side menu for iOS apps
 
-![GitHub Logo](/docs/images/WDSideMenu.gif)
+![GitHub Logo](/docs/images/LeftMenu.gif)
 
 # Features:
 * Two types of side menu:
