@@ -19,7 +19,7 @@ Simple, customizable and effective side menu for iOS apps
  ![GitHub Logo](/Docs/Images/RIghtMenuAboveSideView.gif)
  * Right menu below main view<br>
  ![GitHub Logo](/Docs/Images/RIghtMenuBelowMainView.gif)
-* You can menu can have with resizable central (main) content (you can define scale parameter) <br>
+* You can set make your central (main) content resizable  (you can define scale parameter) <br>
  ![GitHub Logo](/Docs/Images/LeftMenuBelowMainViewWithResize.gif)
 * Two ways to show / hide side menu:
  * Pan gesture 
