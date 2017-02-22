@@ -23,19 +23,10 @@ class MyWDViewController: WDViewController {
     
     override func setupParameters() {
         resizeMainContentView = resizeMainContentViewConfig
-        menuSide = menuSideConfig
+        sideMenuType = menuTypeConfig
         scaleFactor = scaleFactorConfig
-        
-        switch menuSide
-        {
-        case .LeftMenu:
-            sizeMenuWidth = sizeMenuWidthConfig
-        case .RightMenu:
-            sizeMenuWidth = sizeMenuWidthConfig
-        case .BottomMenu:
-            sizeMenuHeight = sizeMenuHeightConfig
-        }
-        sideMenuRelativePosition = sideMenuRelativePositionConfig
+        sizeMenuWidth = sizeMenuWidthConfig
+        //sizeMenuHeight = sizeMenuHeightConfig     //this is valid only for BottomMenu, in preparation
     }
 
     override func getMainViewController() -> UIViewController? {

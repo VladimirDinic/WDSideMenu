@@ -39,14 +39,14 @@ class SampleViewController: UIViewController {
             barButton = UIBarButtonItem(image: #imageLiteral(resourceName: "menuIcon"), style: .plain, target: self, action: #selector(showMenuOrGoBack))
         }
         barButton?.tintColor = UIColor(red: 0.0, green: 105.0/255.0, blue: 105.0/255.0, alpha: 1.0)
-        switch menuSideConfig
+        switch menuTypeConfig
         {
-        case .LeftMenu:
+        case .LeftMenuAboveMainView, .LeftMenuBelowMainView, .LeftMenuStickedToMainView:
             self.navigationItem.leftBarButtonItem = barButton
-        case .RightMenu:
+        case .RightMenuAboveMainView, .RightMenuBelowMainView, .RightMenuStickedToMainView:
             self.navigationItem.rightBarButtonItem = barButton
-        case .BottomMenu:
-            self.navigationItem.leftBarButtonItem = barButton
+        /*case .BottomMenu:
+            self.navigationItem.leftBarButtonItem = barButton*/
         }
     }
     

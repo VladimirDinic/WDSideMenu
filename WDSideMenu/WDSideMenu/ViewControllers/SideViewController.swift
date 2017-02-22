@@ -22,17 +22,17 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        switch menuSideConfig
+        switch menuTypeConfig
         {
-        case .LeftMenu:
+        case .LeftMenuStickedToMainView, .LeftMenuAboveMainView, .RightMenuBelowMainView:
             self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
             self.tableViewTrailingConstraint.constant = 0.0
-        case .RightMenu:
+        case .RightMenuStickedToMainView, .RightMenuAboveMainView, .LeftMenuBelowMainView:
             self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
             self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig
-        case .BottomMenu:
+        /*case .BottomMenu:
             self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
-            self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig
+            self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig*/
         }
         self.view.layoutIfNeeded()
     }
