@@ -26,7 +26,6 @@ class MyWDViewController: WDViewController {
         sideMenuType = menuTypeConfig
         scaleFactor = scaleFactorConfig
         sizeMenuWidth = sizeMenuWidthConfig
-        sizeMenuHeight = sizeMenuHeightConfig     //this is valid only for BottomMenu, in preparation
     }
 
     override func getMainViewController() -> UIViewController? {
