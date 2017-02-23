@@ -30,7 +30,7 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
         case .RightMenuStickedToMainView, .RightMenuAboveMainView, .LeftMenuBelowMainView:
             self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
             self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig
-        /*case .BottomMenu:
+        /*case .BottomMenuAboveMainView, .BottomMenuBelowMainView, .BottomMenuStickedToMainView:
             self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
             self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig*/
         }

@@ -45,7 +45,7 @@ class SampleViewController: UIViewController {
             self.navigationItem.leftBarButtonItem = barButton
         case .RightMenuAboveMainView, .RightMenuBelowMainView, .RightMenuStickedToMainView:
             self.navigationItem.rightBarButtonItem = barButton
-        /*case .BottomMenu:
+        /*case .BottomMenuStickedToMainView, .BottomMenuBelowMainView, .BottomMenuAboveMainView:
             self.navigationItem.leftBarButtonItem = barButton*/
         }
     }

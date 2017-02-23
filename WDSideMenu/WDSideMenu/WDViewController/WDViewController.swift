@@ -38,6 +38,9 @@ public enum SideMenuType
     case RightMenuStickedToMainView
     case RightMenuAboveMainView
     case RightMenuBelowMainView
+    /*case BottomMenuStickedToMainView
+    case BottomMenuAboveMainView
+    case BottomMenuBelowMainView*/
 }
 
 open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
@@ -146,6 +149,15 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         case .RightMenuStickedToMainView:
             menuSide = .RightMenu
             sideMenuRelativePosition = .StickedToMainView
+        /*case .BottomMenuAboveMainView:
+            menuSide = .BottomMenu
+            sideMenuRelativePosition = .AboveMainView
+        case .BottomMenuBelowMainView:
+            menuSide = .BottomMenu
+            sideMenuRelativePosition = .BelowMainView
+        case .BottomMenuStickedToMainView:
+            menuSide = .BottomMenu
+            sideMenuRelativePosition = .StickedToMainView*/
         }
     }
     
