@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/cocoapods/l/WDSideMenu.svg?style=flat)](http://cocoapods.org/pods/WDSideMenu)
 [![Platform](https://img.shields.io/cocoapods/p/WDSideMenu.svg?style=flat)](http://cocoapods.org/pods/WDSideMenu)
 
-Simple, customizable and effective side menu for iOS apps
+WDSideMenu is a simple, powerful, customizable side menu for iOS apps. You can setup left or right side menu very easily and customize several parameters.
 
 # Features:
 * 6 types of side menu:
