@@ -3,8 +3,6 @@
 [![License](https://img.shields.io/cocoapods/l/WDSideMenu.svg?style=flat)](http://cocoapods.org/pods/WDSideMenu)
 [![Platform](https://img.shields.io/cocoapods/p/WDSideMenu.svg?style=flat)](http://cocoapods.org/pods/WDSideMenu)
 
-WDSideMenu is a simple, powerful, customizable side menu for iOS apps. You can setup left or right side menu very easily and customize several parameters.
-
 # Features:
 * 6 types of side menu:
  * Left menu sticked to main view<br>
@@ -29,7 +27,7 @@ WDSideMenu is a simple, powerful, customizable side menu for iOS apps. You can s
  * Side menu width
 * Delegate methods which will be called when side menu did show or did hide
 
-#Instalation:
+#Installation:
 ##Manual:
 Download this project and add WDViewController.swift file to your project
 
