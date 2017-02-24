@@ -11,6 +11,7 @@ import UIKit
 public class Constants: NSObject {
     static let SCREEN_WIDTH:CGFloat = UIScreen.main.bounds.size.width
     static let SCREEN_HEIGHT:CGFloat = UIScreen.main.bounds.size.height
+    static let IS_IPAD:Bool = UIDevice.current.userInterfaceIdiom == .pad
 }
 
 @objc public protocol WDSideMenuDelegate{

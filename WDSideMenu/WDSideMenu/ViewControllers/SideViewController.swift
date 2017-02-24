@@ -10,6 +10,7 @@ import UIKit
 
 class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var sideMenuTableView: UITableView!
     @IBOutlet weak var tableViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewTrailingConstraint: NSLayoutConstraint!
     
@@ -22,14 +23,13 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
         switch menuTypeConfig
         {
         case .LeftMenuStickedToMainView, .LeftMenuAboveMainView, .RightMenuBelowMainView:
-            self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
-            self.tableViewTrailingConstraint.constant = 0.0
+            self.tableViewTrailingConstraint.constant = 0
         case .RightMenuStickedToMainView, .RightMenuAboveMainView, .LeftMenuBelowMainView:
-            self.tableViewWidthConstraint.constant = sizeMenuWidthConfig
-            self.tableViewTrailingConstraint.constant = UIScreen.main.bounds.size.width - sizeMenuWidthConfig
+            self.tableViewTrailingConstraint.constant = Constants.SCREEN_WIDTH - sizeMenuWidthConfig
         }
         self.view.layoutIfNeeded()
     }
@@ -69,8 +69,12 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
         return cell
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.sideMenuTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.SCREEN_WIDTH * 0.15
+        return Constants.IS_IPAD ? 100.0 : 60.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

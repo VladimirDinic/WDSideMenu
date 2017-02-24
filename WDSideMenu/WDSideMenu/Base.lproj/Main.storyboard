@@ -111,6 +111,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="sideMenuTableView" destination="Wcj-an-SZe" id="BG9-q7-xZX"/>
                         <outlet property="tableViewTrailingConstraint" destination="jYj-xL-uzm" id="Y2r-km-0ft"/>
                         <outlet property="tableViewWidthConstraint" destination="a2m-Kv-N3U" id="ftD-Bh-Dvo"/>
                     </connections>

@@ -9,10 +9,10 @@
          contextName = "WDViewController.handlePan(UIPanGestureRecognizer) -&gt; ():WDViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "originY">
+               value = "sizeMenuHeight">
             </PersistentString>
             <PersistentString
-               value = "sizeMenuHeight">
+               value = "originalSideTopConstraint">
             </PersistentString>
             <PersistentString
                value = "sideMenuTopOffset.constant">
@@ -21,7 +21,15 @@
                value = "max(min(sizeMenuHeight, CGFloat(originalSideTopConstraint) + location.y - CGFloat(originY)),0.0)">
             </PersistentString>
             <PersistentString
-               value = "originalSideTopConstraint">
+               value = "originY">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SideViewController.tableView(UITableView, heightForRowAt : IndexPath) -&gt; CGFloat:SideViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Constants.IS_IPAD">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

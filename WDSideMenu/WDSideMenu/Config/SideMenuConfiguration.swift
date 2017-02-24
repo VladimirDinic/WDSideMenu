@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let menuTypeConfig:SideMenuType = .RightMenuStickedToMainView
+let menuTypeConfig:SideMenuType = .LeftMenuBelowMainView
 let resizeMainContentViewConfig = false
 let sizeMenuWidthConfig = Constants.SCREEN_WIDTH * 0.7
 let scaleFactorConfig:CGFloat = 0.2
