@@ -15,6 +15,6 @@ s.author           = { "Vladimir Dinic" => "vladimir88dev@gmail.com" }
 s.source           = { :git => "https://github.com/VladimirDinic/WDSideMenu.git", :tag => "#{s.version}"}
 
 s.ios.deployment_target = "10.0"
-s.source_files = "WDSideMenu/WDSideMenu/WDViewController/*"
+s.source_files = "WDSideMenu/WDSideMenu/WDViewController/WDViewController.swift"
 
 end
