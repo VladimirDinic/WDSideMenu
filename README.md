@@ -25,6 +25,7 @@
 * Other customizable parameters:
  * In order to define main view or side view, you just have to create appropriate UIViewControllers, set up their layouts, and use them as parameters for setting up side menu.
  * Side menu width
+ * Shadow on / off
 * Delegate methods which will be called when side menu did show or did hide
 
 #Installation:
@@ -33,7 +34,10 @@ Download this project and add WDViewController.swift file to your project
 
 ##CocoaPods:
 ```Ruby
-pod 'WDSideMenu'
+target '<TargetName>' do
+    use_frameworks!
+    pod 'WDSideMenu', ' ~> 0.2.1'
+end
 ```
 #Usage
 1. After including WDViewController.swift file in your project (via CocoaPods or manual), create a UIViewController which will subclass WDViewController, and this UIViewController will be holder for your main content and side menu.
