@@ -59,6 +59,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     private var menuSide:SideMenuSide = .LeftMenu
     private var sideMenuRelativePosition:SideMenuRelativePosition = .StickedToMainView
     
+    open var addShadowToTopView:Bool = true
     open var sideMenuType:SideMenuType = .LeftMenuStickedToMainView
     open var panGestureEnabled:Bool = true
     open var sizeMenuWidth:CGFloat = Constants.SCREEN_WIDTH * 0.67
@@ -98,6 +99,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     final private  func setDefaultParameters()
     {
+        addShadowToTopView = true
         resizeMainContentView = false
         sizeMenuWidth = Constants.SCREEN_WIDTH * 0.67
         scaleFactor = (Constants.SCREEN_WIDTH - sizeMenuWidth)/Constants.SCREEN_WIDTH
@@ -150,13 +152,29 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     final private  func setupContent()
     {
-        if sideMenuRelativePosition == .BelowMainView
+        switch sideMenuRelativePosition
         {
+        case .BelowMainView:
             self.addSideMenu()
             self.addMainContent()
-        }
-        else
-        {
+            if let mainViewDefined = self.mainView
+            {
+                mainViewDefined.layer.shadowColor = UIColor.black.cgColor
+                mainViewDefined.layer.shadowRadius = 5
+                mainViewDefined.layer.shadowOpacity = 1.0
+                mainViewDefined.layer.masksToBounds = false
+            }
+        case .AboveMainView:
+            self.addMainContent()
+            self.addSideMenu()
+            if let sideViewDefined = self.sideView
+            {
+                sideViewDefined.layer.shadowColor = UIColor.black.cgColor
+                sideViewDefined.layer.shadowRadius = 5
+                sideViewDefined.layer.shadowOpacity = 1.0
+                sideViewDefined.layer.masksToBounds = false
+            }
+        case .StickedToMainView:
             self.addMainContent()
             self.addSideMenu()
         }

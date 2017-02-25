@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 let menuTypeConfig:SideMenuType = .LeftMenuBelowMainView
-let resizeMainContentViewConfig = false
+let resizeMainContentViewConfig = true
 let sizeMenuWidthConfig = min(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT) * 0.7
 let scaleFactorConfig:CGFloat = 0.2
