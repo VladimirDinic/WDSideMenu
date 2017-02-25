@@ -4,6 +4,11 @@
    <ContextStates>
       <ContextState
          contextName = "WDViewController.addSideMenu() -&gt; ():WDViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sizeMenuWidth/Constants.SCREEN_WIDTH">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "WDViewController.handlePan(UIPanGestureRecognizer) -&gt; ():WDViewController.swift">
