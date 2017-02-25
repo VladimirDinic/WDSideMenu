@@ -256,7 +256,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                     }
                 }
                 
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.25, animations: {
                     self.view.layoutIfNeeded()
                     self.transformMainContentView()
                 }, completion: { finished in
@@ -428,7 +428,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                 sideTopOffset.constant = 0
             }
         }
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.view.layoutIfNeeded()
             self.transformMainContentView()
         }, completion: { finished in
