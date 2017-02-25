@@ -13,11 +13,6 @@
 		F56123941E5BAE210092B4FB /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */; };
 		F56123961E5BAE2B0092B4FB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123951E5BAE2B0092B4FB /* MapViewController.swift */; };
 		F56123981E5BAE390092B4FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123971E5BAE390092B4FB /* SettingsViewController.swift */; };
-		F59780171E61F27B00A06EEB /* ConstantsAndEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59780141E61F27B00A06EEB /* ConstantsAndEnums.swift */; };
-		F59780181E61F27B00A06EEB /* WDBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59780151E61F27B00A06EEB /* WDBasicViewController.swift */; };
-		F59780191E61F27B00A06EEB /* WDViewControllerGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59780161E61F27B00A06EEB /* WDViewControllerGestureExtension.swift */; };
-		F597801B1E61F2BB00A06EEB /* WDViewControllerCreationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F597801A1E61F2BB00A06EEB /* WDViewControllerCreationExtension.swift */; };
-		F597801D1E61F34500A06EEB /* WDViewControllerTransformationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F597801C1E61F34500A06EEB /* WDViewControllerTransformationExtension.swift */; };
 		F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */; };
 		F5A5B2DE1E58E8AF00E6CFE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2DC1E58E8AF00E6CFE2 /* Main.storyboard */; };
 		F5A5B2E31E58E8AF00E6CFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2E21E58E8AF00E6CFE2 /* Assets.xcassets */; };
@@ -39,11 +34,6 @@
 		F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		F56123951E5BAE2B0092B4FB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F56123971E5BAE390092B4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		F59780141E61F27B00A06EEB /* ConstantsAndEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsAndEnums.swift; sourceTree = "<group>"; };
-		F59780151E61F27B00A06EEB /* WDBasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDBasicViewController.swift; sourceTree = "<group>"; };
-		F59780161E61F27B00A06EEB /* WDViewControllerGestureExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDViewControllerGestureExtension.swift; sourceTree = "<group>"; };
-		F597801A1E61F2BB00A06EEB /* WDViewControllerCreationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDViewControllerCreationExtension.swift; sourceTree = "<group>"; };
-		F597801C1E61F34500A06EEB /* WDViewControllerTransformationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDViewControllerTransformationExtension.swift; sourceTree = "<group>"; };
 		F5A5B2D51E58E8AF00E6CFE2 /* WDSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5A5B2DD1E58E8AF00E6CFE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,18 +87,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		F59780131E61F27B00A06EEB /* BasicClassAndExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				F59780141E61F27B00A06EEB /* ConstantsAndEnums.swift */,
-				F59780151E61F27B00A06EEB /* WDBasicViewController.swift */,
-				F59780161E61F27B00A06EEB /* WDViewControllerGestureExtension.swift */,
-				F597801A1E61F2BB00A06EEB /* WDViewControllerCreationExtension.swift */,
-				F597801C1E61F34500A06EEB /* WDViewControllerTransformationExtension.swift */,
-			);
-			path = BasicClassAndExtensions;
-			sourceTree = "<group>";
-		};
 		F5A5B2CC1E58E8AF00E6CFE2 = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +123,6 @@
 		F5A5B2ED1E58E91A00E6CFE2 /* WDViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F59780131E61F27B00A06EEB /* BasicClassAndExtensions */,
 				F5A5B2EF1E58E91A00E6CFE2 /* WDViewController.swift */,
 			);
 			path = WDViewController;
@@ -308,20 +285,15 @@
 			files = (
 				F5A5B3061E58EC5500E6CFE2 /* SideViewController.swift in Sources */,
 				F5A5B2F11E58E91A00E6CFE2 /* WDViewController.swift in Sources */,
-				F59780171E61F27B00A06EEB /* ConstantsAndEnums.swift in Sources */,
-				F59780181E61F27B00A06EEB /* WDBasicViewController.swift in Sources */,
 				F56123981E5BAE390092B4FB /* SettingsViewController.swift in Sources */,
 				F5A822731E5A562B00275964 /* SampleViewController.swift in Sources */,
-				F597801D1E61F34500A06EEB /* WDViewControllerTransformationExtension.swift in Sources */,
 				F56123961E5BAE2B0092B4FB /* MapViewController.swift in Sources */,
-				F59780191E61F27B00A06EEB /* WDViewControllerGestureExtension.swift in Sources */,
 				F5A5B3081E5928C300E6CFE2 /* MyNavigationController.swift in Sources */,
 				F56123941E5BAE210092B4FB /* ProfilePageViewController.swift in Sources */,
 				F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */,
 				F5A5B2F51E58E96200E6CFE2 /* MyWDViewController.swift in Sources */,
 				F56123901E5BA2BE0092B4FB /* MenuCell.swift in Sources */,
 				F5A822761E5A5C7D00275964 /* SideMenuConfiguration.swift in Sources */,
-				F597801B1E61F2BB00A06EEB /* WDViewControllerCreationExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
