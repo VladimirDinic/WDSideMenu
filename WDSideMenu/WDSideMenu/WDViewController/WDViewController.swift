@@ -45,6 +45,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     private var mainViewIsTapped:Bool = false
     private var panGestureRecognizer: UIPanGestureRecognizer?
     private var tapGestureRecognizer: UITapGestureRecognizer?
+    private var edgeScreenGestureRecognizer: UIScreenEdgePanGestureRecognizer?
     private var sideMenuVisible:Bool = false
     private var originX = 0.0
     private var originY = 0.0
@@ -77,6 +78,10 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name(rawValue: "ShowMenu"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name(rawValue: "SelectItem"), object: nil)
+        if let sideViewDefined = self.sideView
+        {
+            sideViewDefined.isHidden = false
+        }
     }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -159,20 +164,27 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
             self.addMainContent()
             if let mainViewDefined = self.mainView
             {
-                mainViewDefined.layer.shadowColor = UIColor.black.cgColor
-                mainViewDefined.layer.shadowRadius = 5
-                mainViewDefined.layer.shadowOpacity = 1.0
-                mainViewDefined.layer.masksToBounds = false
+                if addShadowToTopView
+                {
+                    mainViewDefined.layer.shadowColor = UIColor.black.cgColor
+                    mainViewDefined.layer.shadowRadius = 5
+                    mainViewDefined.layer.shadowOpacity = 1.0
+                    mainViewDefined.layer.masksToBounds = false
+                }
             }
         case .AboveMainView:
             self.addMainContent()
             self.addSideMenu()
             if let sideViewDefined = self.sideView
             {
-                sideViewDefined.layer.shadowColor = UIColor.black.cgColor
-                sideViewDefined.layer.shadowRadius = 5
-                sideViewDefined.layer.shadowOpacity = 1.0
-                sideViewDefined.layer.masksToBounds = false
+                if addShadowToTopView
+                {
+                    sideViewDefined.layer.shadowColor = UIColor.black.cgColor
+                    sideViewDefined.layer.shadowRadius = 5
+                    sideViewDefined.layer.shadowOpacity = 1.0
+                    sideViewDefined.layer.masksToBounds = false
+                }
+                sideViewDefined.isHidden = true
             }
         case .StickedToMainView:
             self.addMainContent()
@@ -180,6 +192,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         self.setupPanGesture()
         self.setupTapGesture()
+        self.setupEdgeScreenGesture()
     }
     
     final private func setupPanGesture()
@@ -187,6 +200,14 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         panGestureRecognizer?.delegate = self
         self.view.addGestureRecognizer(panGestureRecognizer!)
+    }
+    
+    final private func setupEdgeScreenGesture()
+    {
+        edgeScreenGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleScreenEdge))
+        edgeScreenGestureRecognizer?.edges = .left
+        edgeScreenGestureRecognizer?.delegate = self
+        self.view.addGestureRecognizer(edgeScreenGestureRecognizer!)
     }
     
     final private func setupTapGesture()
@@ -205,10 +226,94 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    @objc final private func handleScreenEdge(_ gestureRecognizer: UIScreenEdgePanGestureRecognizer)
+    {
+        if !panGestureEnabled
+        {
+            return
+        }
+        if let sideMenuHorizontalOffset = self.sideMenuHorizontalOffset, let sideMenuVerticalOffset = self.sideMenuVerticalOffset {
+            let location = gestureRecognizer.location(in: self.view)
+            switch gestureRecognizer.state {
+            case .began:
+                originX = Double(location.x)
+                originY = Double(location.y)
+                originalSideHorizontalConstraint = Double(sideMenuHorizontalOffset.constant)
+                originalSideVerticalConstraint = Double(sideMenuVerticalOffset.constant)
+            case .changed:
+                switch menuSide
+                {
+                case .LeftMenu:
+                    sideMenuHorizontalOffset.constant = max(min(sizeMenuWidth, CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX)),0.0)
+                case .RightMenu:
+                    sideMenuHorizontalOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x),0.0)
+                }
+                self.transformMainContentView()
+                self.view.layoutIfNeeded()
+            case .ended:
+                var show:Bool = false
+                switch menuSide
+                {
+                case .LeftMenu:
+                    if CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
+                    {
+                        sideMenuHorizontalOffset.constant = 0.0
+                    }
+                    else
+                    {
+                        sideMenuHorizontalOffset.constant = sizeMenuWidth
+                        show = true
+                    }
+                case .RightMenu:
+                    if CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
+                    {
+                        sideMenuHorizontalOffset.constant = 0.0
+                    }
+                    else
+                    {
+                        sideMenuHorizontalOffset.constant = -sizeMenuWidth
+                        show = true
+                    }
+                }
+                
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.view.layoutIfNeeded()
+                    self.transformMainContentView()
+                }, completion: { finished in
+                    if finished
+                    {
+                        if let sideMenuDelegate = self.sideMenuDelegate, let mainContentDelegate = self.mainContentDelegate
+                        {
+                            if show
+                            {
+                                if !self.sideMenuVisible
+                                {
+                                    mainContentDelegate.sideViewDidShow!()
+                                    sideMenuDelegate.sideViewDidShow!()
+                                }
+                            }
+                            else
+                            {
+                                if self.sideMenuVisible
+                                {
+                                    sideMenuDelegate.sideViewDidHide!()
+                                    mainContentDelegate.sideViewDidHide!()
+                                }
+                            }
+                        }
+                        self.sideMenuVisible = show
+                    }
+                })
+            default:
+                print("Do nothing")
+            }
+        }
+        
+    }
     
     @objc final private func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         
-        if !panGestureEnabled
+        if !panGestureEnabled || !self.sideMenuVisible
         {
             return
         }
