@@ -86,18 +86,18 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         
-        if let mainView = self.mainView
+        if let sideView = self.sideView
         {
-            mainViewIsTapped = mainView.frame.contains(gestureRecognizer.location(in:self.view))
-            if (gestureRecognizer == self.tapGestureRecognizer || otherGestureRecognizer == self.tapGestureRecognizer) && mainViewIsTapped && sideMenuVisible && resizeMainContentView
+            mainViewIsTapped = !sideView.frame.contains(gestureRecognizer.location(in:self.view))
+        }
+        if (gestureRecognizer == self.tapGestureRecognizer || otherGestureRecognizer == self.tapGestureRecognizer) && mainViewIsTapped && sideMenuVisible && resizeMainContentView
+        {
+            let panGestureIsOneOfThem = gestureRecognizer == self.panGestureRecognizer || otherGestureRecognizer == self.panGestureRecognizer
+            if mainViewIsTapped && !panGestureIsOneOfThem
             {
-                let panGestureIsOneOfThem = gestureRecognizer == self.panGestureRecognizer || otherGestureRecognizer == self.panGestureRecognizer
-                if mainViewIsTapped && !panGestureIsOneOfThem
-                {
-                    handleTap(self.tapGestureRecognizer!)
-                }
-                return false
+                handleTap(self.tapGestureRecognizer!)
             }
+            return false
         }
         return true
     }
@@ -205,7 +205,14 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     final private func setupEdgeScreenGesture()
     {
         edgeScreenGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleScreenEdge))
-        edgeScreenGestureRecognizer?.edges = .left
+        if menuSide == .LeftMenu
+        {
+            edgeScreenGestureRecognizer?.edges = .left
+        }
+        else
+        {
+            edgeScreenGestureRecognizer?.edges = .right
+        }
         edgeScreenGestureRecognizer?.delegate = self
         self.view.addGestureRecognizer(edgeScreenGestureRecognizer!)
     }
@@ -220,7 +227,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc final private func handleTap(_ gestureRecognizer: UITapGestureRecognizer)
     {
-        if self.sideMenuVisible && self.resizeMainContentView && mainViewIsTapped
+        if self.sideMenuVisible && mainViewIsTapped
         {
             self.toggleSideMenu()
         }
@@ -302,6 +309,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                             }
                         }
                         self.sideMenuVisible = show
+                        self.mainView?.isUserInteractionEnabled = !self.sideMenuVisible
                     }
                 })
             default:
@@ -313,8 +321,12 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc final private func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         
-        if !panGestureEnabled || !self.sideMenuVisible
+        if !panGestureEnabled || !self.sideMenuVisible || (mainViewIsTapped && sideMenuRelativePosition == .AboveMainView)
         {
+            if sideMenuVisible
+            {
+                self.toggleSideMenu()
+            }
             return
         }
         if let sideMenuHorizontalOffset = self.sideMenuHorizontalOffset, let sideMenuVerticalOffset = self.sideMenuVerticalOffset {
@@ -387,6 +399,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                             }
                         }
                         self.sideMenuVisible = show
+                        self.mainView?.isUserInteractionEnabled = !self.sideMenuVisible
                     }
                 })
             default:
@@ -559,7 +572,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                 case .RightMenu:
                     self.sideMenuVisible = self.sideMenuHorizontalOffset.constant != 0
                 }
-                self.mainView?.isUserInteractionEnabled = !(self.resizeMainContentView && self.sideMenuVisible)
+                self.mainView?.isUserInteractionEnabled = !self.sideMenuVisible
             }
         })
     }
