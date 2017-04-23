@@ -76,8 +76,6 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name(rawValue: "ShowMenu"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(toggleSideMenu), name: NSNotification.Name(rawValue: "SelectItem"), object: nil)
         if let sideViewDefined = self.sideView
         {
             sideViewDefined.isHidden = false
@@ -523,29 +521,46 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    final func toggleSideMenu()
+    public final func showSideMenu()
     {
-        if !self.sideMenuVisible
+        switch menuSide
         {
-            switch menuSide
-            {
             case .LeftMenu:
                 self.sideMenuHorizontalOffset.constant = sizeMenuWidth
             case .RightMenu:
                 self.sideMenuHorizontalOffset.constant = -sizeMenuWidth
-            }
+        }
+        self.animateSideMenu()
+    }
+    
+    public final func hideSideMenu()
+    {
+        if let sideLeftOffset = self.sideMenuHorizontalOffset
+        {
+            sideLeftOffset.constant = 0
+        }
+        if let sideTopOffset = self.sideMenuVerticalOffset
+        {
+            sideTopOffset.constant = 0
+        }
+        self.animateSideMenu()
+    }
+    
+    public final func toggleSideMenu()
+    {
+        if !self.sideMenuVisible
+        {
+            self.showSideMenu()
         }
         else
         {
-            if let sideLeftOffset = self.sideMenuHorizontalOffset
-            {
-                sideLeftOffset.constant = 0
-            }
-            if let sideTopOffset = self.sideMenuVerticalOffset
-            {
-                sideTopOffset.constant = 0
-            }
+            self.hideSideMenu()
         }
+        
+    }
+    
+    final func animateSideMenu()
+    {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.layoutIfNeeded()
             self.transformMainContentView()

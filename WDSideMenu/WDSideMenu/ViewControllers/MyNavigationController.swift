@@ -51,6 +51,10 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
         if self.viewControllers.count == 1
         {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ShowMenu"), object: nil)
+            if let sideMenuDelegate = ControlManager.sharedInstance.sideMenuDelegate
+            {
+                sideMenuDelegate.toggleMeSideMenu()
+            }
         }
         else
         {

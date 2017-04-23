@@ -13,6 +13,7 @@
 		F56123941E5BAE210092B4FB /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */; };
 		F56123961E5BAE2B0092B4FB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123951E5BAE2B0092B4FB /* MapViewController.swift */; };
 		F56123981E5BAE390092B4FB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56123971E5BAE390092B4FB /* SettingsViewController.swift */; };
+		F58D23B21EAD26F1001939C3 /* ControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58D23B11EAD26F1001939C3 /* ControlManager.swift */; };
 		F5A5B2D91E58E8AF00E6CFE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */; };
 		F5A5B2DE1E58E8AF00E6CFE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2DC1E58E8AF00E6CFE2 /* Main.storyboard */; };
 		F5A5B2E31E58E8AF00E6CFE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5A5B2E21E58E8AF00E6CFE2 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		F56123931E5BAE210092B4FB /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		F56123951E5BAE2B0092B4FB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F56123971E5BAE390092B4FB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F58D23B11EAD26F1001939C3 /* ControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlManager.swift; sourceTree = "<group>"; };
 		F5A5B2D51E58E8AF00E6CFE2 /* WDSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5A5B2DD1E58E8AF00E6CFE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A5B2D81E58E8AF00E6CFE2 /* AppDelegate.swift */,
+				F58D23B11EAD26F1001939C3 /* ControlManager.swift */,
 				F5A822741E5A5C6800275964 /* Config */,
 				F5A5B2ED1E58E91A00E6CFE2 /* WDViewController */,
 				F5A5B2F31E58E95A00E6CFE2 /* ViewControllers */,
@@ -294,6 +297,7 @@
 				F5A5B2F51E58E96200E6CFE2 /* MyWDViewController.swift in Sources */,
 				F56123901E5BA2BE0092B4FB /* MenuCell.swift in Sources */,
 				F5A822761E5A5C7D00275964 /* SideMenuConfiguration.swift in Sources */,
+				F58D23B21EAD26F1001939C3 /* ControlManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +425,7 @@
 				INFOPLIST_FILE = WDSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirdinic.WDSideMenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinicvladimir.WDSideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -436,7 +440,7 @@
 				INFOPLIST_FILE = WDSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirdinic.WDSideMenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinicvladimir.WDSideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

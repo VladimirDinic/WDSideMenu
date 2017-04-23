@@ -80,6 +80,10 @@ class SideViewController: UIViewController, WDSideMenuDelegate, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pageToOpenDict:[String:String] = ["PageToOpen":"Page\(indexPath.row)"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SelectItem"), object: nil, userInfo: pageToOpenDict)
+        if let sideMenuDelegate = ControlManager.sharedInstance.sideMenuDelegate
+        {
+            sideMenuDelegate.hideMeSideMenu()
+        }
     }
 
     /*

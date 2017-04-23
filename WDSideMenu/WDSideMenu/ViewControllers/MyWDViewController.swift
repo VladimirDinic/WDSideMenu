@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MyWDViewController: WDViewController {
+class MyWDViewController: WDViewController, SideMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ControlManager.sharedInstance.sideMenuDelegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -39,6 +39,20 @@ class MyWDViewController: WDViewController {
         let sideMenuViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SideViewController") as! SideViewController
         self.sideMenuDelegate = sideMenuViewController
         return sideMenuViewController
+    }
+    
+    func showMeSideMenu()
+    {
+        self.showSideMenu()
+    }
+    
+    func hideMeSideMenu()
+    {
+        self.hideSideMenu()
+    }
+    
+    func toggleMeSideMenu() {
+        self.toggleSideMenu()
     }
     
     
