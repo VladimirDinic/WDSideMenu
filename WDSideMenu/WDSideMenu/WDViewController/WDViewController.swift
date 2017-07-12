@@ -59,6 +59,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     private var sideMenuVerticalOffset: NSLayoutConstraint!
     private var menuSide:SideMenuSide = .LeftMenu
     private var sideMenuRelativePosition:SideMenuRelativePosition = .StickedToMainView
+    var animationInProgress = false
     
     open var addShadowToTopView:Bool = true
     open var sideMenuType:SideMenuType = .LeftMenuStickedToMainView
@@ -561,35 +562,40 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
     final func animateSideMenu()
     {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.layoutIfNeeded()
-            self.transformMainContentView()
-        }, completion: { finished in
-            if finished
-            {
-                if let sideMenuDelegate = self.sideMenuDelegate, let mainContentDelegate = self.mainContentDelegate
+        if !animationInProgress
+        {
+            animationInProgress = true
+            UIView.animate(withDuration: 0.25, animations: {
+                self.view.layoutIfNeeded()
+                self.transformMainContentView()
+            }, completion: { finished in
+                self.animationInProgress = false
+                if finished
                 {
-                    if !self.sideMenuVisible
+                    if let sideMenuDelegate = self.sideMenuDelegate, let mainContentDelegate = self.mainContentDelegate
                     {
-                        mainContentDelegate.sideViewDidShow!()
-                        sideMenuDelegate.sideViewDidShow!()
+                        if !self.sideMenuVisible
+                        {
+                            mainContentDelegate.sideViewDidShow!()
+                            sideMenuDelegate.sideViewDidShow!()
+                        }
+                        else
+                        {
+                            sideMenuDelegate.sideViewDidHide!()
+                            mainContentDelegate.sideViewDidHide!()
+                        }
                     }
-                    else
+                    switch self.menuSide
                     {
-                        sideMenuDelegate.sideViewDidHide!()
-                        mainContentDelegate.sideViewDidHide!()
+                    case .LeftMenu:
+                        self.sideMenuVisible = self.sideMenuHorizontalOffset.constant != 0
+                    case .RightMenu:
+                        self.sideMenuVisible = self.sideMenuHorizontalOffset.constant != 0
                     }
+                    self.mainView?.isUserInteractionEnabled = !self.sideMenuVisible
                 }
-                switch self.menuSide
-                {
-                case .LeftMenu:
-                    self.sideMenuVisible = self.sideMenuHorizontalOffset.constant != 0
-                case .RightMenu:
-                    self.sideMenuVisible = self.sideMenuHorizontalOffset.constant != 0
-                }
-                self.mainView?.isUserInteractionEnabled = !self.sideMenuVisible
-            }
-        })
+            })
+        }
     }
     
     

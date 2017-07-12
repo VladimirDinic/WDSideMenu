@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 s.platform = :ios
 s.name             = "WDSideMenu"
-s.version          = "0.2.4"
+s.version          = "0.2.5"
 s.summary          = "WDSideMenu is a simple, powerful, customizable side menu for iOS apps."
 
 s.description      = <<-DESC
