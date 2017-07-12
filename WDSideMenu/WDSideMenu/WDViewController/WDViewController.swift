@@ -97,6 +97,10 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
                 handleTap(self.tapGestureRecognizer!)
             }
         }
+        if gestureRecognizer == self.edgeScreenGestureRecognizer || otherGestureRecognizer == self.edgeScreenGestureRecognizer
+        {
+            return true
+        }
         return false
     }
     
@@ -525,10 +529,10 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     {
         switch menuSide
         {
-            case .LeftMenu:
-                self.sideMenuHorizontalOffset.constant = sizeMenuWidth
-            case .RightMenu:
-                self.sideMenuHorizontalOffset.constant = -sizeMenuWidth
+        case .LeftMenu:
+            self.sideMenuHorizontalOffset.constant = sizeMenuWidth
+        case .RightMenu:
+            self.sideMenuHorizontalOffset.constant = -sizeMenuWidth
         }
         self.animateSideMenu()
     }
