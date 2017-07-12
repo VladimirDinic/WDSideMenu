@@ -96,9 +96,8 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
             {
                 handleTap(self.tapGestureRecognizer!)
             }
-            return false
         }
-        return true
+        return false
     }
     
     final private  func setDefaultParameters()
