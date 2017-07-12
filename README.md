@@ -71,7 +71,7 @@ class MyHomeViewController: WDViewController {
     override func getMainViewController() -> UIViewController? {
         let navigation:MyNavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController") as! MyNavigationController
         self.mainContentDelegate = navigation
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavigationController")
+        return navigation
     }
     
     override func getSideMenuViewController() -> UIViewController? {
