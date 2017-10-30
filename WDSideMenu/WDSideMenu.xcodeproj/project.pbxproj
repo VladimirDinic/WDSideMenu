@@ -209,7 +209,7 @@
 				TargetAttributes = {
 					F5A5B2D41E58E8AF00E6CFE2 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = SWMG5MXUC3;
+						DevelopmentTeam = 3CCXG2UGPS;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -437,7 +437,7 @@
 			baseConfigurationReference = 95DB360B25C27DD242F004A6 /* Pods-WDSideMenu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SWMG5MXUC3;
+				DEVELOPMENT_TEAM = 3CCXG2UGPS;
 				INFOPLIST_FILE = WDSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
@@ -452,7 +452,7 @@
 			baseConfigurationReference = C706CE0994E58EC85888D46E /* Pods-WDSideMenu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SWMG5MXUC3;
+				DEVELOPMENT_TEAM = 3CCXG2UGPS;
 				INFOPLIST_FILE = WDSideMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
