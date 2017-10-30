@@ -28,24 +28,24 @@
  * Shadow on / off
 * Delegate methods which will be called when side menu did show or did hide
 
-#Installation:
-##Manual:
+# Installation:
+## Manual:
 Download this project and add WDViewController.swift file to your project
 
-##CocoaPods:
+## CocoaPods:
 ```Ruby
 target '<TargetName>' do
     use_frameworks!
     pod 'WDSideMenu', ' ~> 0.2.7'
 end
 ```
-#Usage
+# Usage
 1. After including WDViewController.swift file in your project (via CocoaPods or manual), create a UIViewController which will subclass WDViewController, and this UIViewController will be holder for your main content and side menu.
 2. Define UIViewControllers which will be used as main content or side view.
 3. Implement WDSideMenuDelegate in your ViewControllers if you want to use sideViewDidShow() and sideViewDidHide() delegate methods
 4. Override setupParameters() method and define parameters if you don't like default settings (side menu width, main content scale factor,...)
 
-##Example of usage
+## Example of usage
 ```Swift
 import UIKit
 
@@ -82,6 +82,6 @@ class MyHomeViewController: WDViewController {
 }
 ```
 
-#Note:
+# Note:
 Documentation is still in preparation and the code will be updated regularly
 <br>If you find any bug, please report it, and I will try to fix it ASAP.
