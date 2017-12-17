@@ -86,6 +86,11 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    open func setupParameters()
+    {
+        
+    }
+    
     open func getMainViewController() -> UIViewController?
     {
         return nil

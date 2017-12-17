@@ -2,11 +2,11 @@ Pod::Spec.new do |s|
 
 s.platform = :ios
 s.name             = "WDSideMenu"
-s.version          = "1.0.1"
+s.version          = "1.0.2"
 s.summary          = "WDSideMenu is a simple, powerful, customizable side menu for iOS apps."
 
 s.description      = <<-DESC
-This fantastic view changes its color gradually makes your app look fantastic!
+This fantastic library enables you to create powerful side menu for iOS apps with easy!
 DESC
 
 s.homepage         = "https://github.com/VladimirDinic/WDSideMenu"

@@ -24,7 +24,7 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func openPage(notification:Notification)
+    @objc func openPage(notification:Notification)
     {
         let pageToOpen = notification.userInfo?["PageToOpen"]
         self.pushViewController(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: pageToOpen as! String), animated: true)
@@ -36,7 +36,7 @@ class MyNavigationController: UINavigationController, WDSideMenuDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(disablePanGesture), name: NSNotification.Name(rawValue: "DisablePanGesture"), object: nil)
     }
     
-    func disablePanGesture(notification:Notification)
+    @objc func disablePanGesture(notification:Notification)
     {
         self.wdSideView?.panGestureEnabled = !((notification.userInfo?["DisablePanGesture"] as! NSNumber).boolValue)
     }

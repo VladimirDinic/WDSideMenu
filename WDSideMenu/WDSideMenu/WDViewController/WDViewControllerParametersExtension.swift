@@ -25,11 +25,6 @@ extension WDViewController
         scaleFactor = (Constants.SCREEN_WIDTH - sizeMenuWidth)/Constants.SCREEN_WIDTH
     }
     
-    open func setupParameters()
-    {
-        
-    }
-    
     final private func handleParameters()
     {
         switch sideMenuType
