@@ -165,6 +165,11 @@ extension WDViewController
             }
             return
         }
+        guard
+            let mainView = self.mainView,
+            mainView.frame.contains(gestureRecognizer.location(in: self.view)) else {
+                return
+        }
         if let sideMenuHorizontalOffset = self.sideMenuHorizontalOffset, let sideMenuVerticalOffset = self.sideMenuVerticalOffset {
             let location = gestureRecognizer.location(in: self.view)
             switch gestureRecognizer.state {
