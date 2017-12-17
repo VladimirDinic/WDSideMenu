@@ -40,6 +40,7 @@ public enum SideMenuType
 
 open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    var panningSideMenuInProgress:Bool = false
     var mainViewIsTapped:Bool = false
     var panGestureRecognizer: UIPanGestureRecognizer?
     var tapGestureRecognizer: UITapGestureRecognizer?
