@@ -50,7 +50,7 @@ class SampleViewController: UIViewController {
     
     @objc func showMenuOrGoBack()
     {
-        if let navigationController = self.navigationController as! MyNavigationController!
+        if let navigationController = self.navigationController as? MyNavigationController
         {
             navigationController.showMenuOrGoBack()
         }

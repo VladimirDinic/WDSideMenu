@@ -98,7 +98,7 @@ extension WDViewController
                 switch menuSide
                 {
                 case .LeftMenu:
-                    if CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
+                    if (gestureRecognizer.velocity(in: self.view).x == 0 && CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5) || gestureRecognizer.velocity(in: self.view).x < 0.0
                     {
                         sideMenuHorizontalOffset.constant = 0.0
                     }
@@ -108,7 +108,7 @@ extension WDViewController
                         show = true
                     }
                 case .RightMenu:
-                    if CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
+                    if (gestureRecognizer.velocity(in: self.view).x == 0.0 && CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5) || gestureRecognizer.velocity(in: self.view).x > 0.0
                     {
                         sideMenuHorizontalOffset.constant = 0.0
                     }
@@ -119,7 +119,7 @@ extension WDViewController
                     }
                 }
                 
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.15, animations: {
                     self.view.layoutIfNeeded()
                     self.transformMainContentView()
                 }, completion: { finished in
@@ -173,7 +173,7 @@ extension WDViewController
                     switch gestureRecognizer.state {
                     case .ended:
                         if panningSideMenuInProgress {
-                            endedGesture(location: location)
+                            endedGesture(gesture: gestureRecognizer, location: location)
                         }
                     default:
                         print("Do nothing")
@@ -193,24 +193,24 @@ extension WDViewController
                 case .LeftMenu:
                     sideMenuHorizontalOffset.constant = max(min(sizeMenuWidth, CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX)),0.0)
                 case .RightMenu:
-                    sideMenuHorizontalOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x),0.0)
+                    sideMenuHorizontalOffset.constant = -max(min(sizeMenuWidth, CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x), 0.0)
                 }
                 self.transformMainContentView()
                 self.view.layoutIfNeeded()
             case .ended:
-                endedGesture(location: location)
+                endedGesture(gesture: gestureRecognizer, location: location)
             default:
                 print("Do nothing")
             }
         }
     }
     
-    func endedGesture(location:CGPoint) {
+    func endedGesture(gesture: UIPanGestureRecognizer, location:CGPoint) {
         var show:Bool = false
         switch menuSide
         {
         case .LeftMenu:
-            if CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5
+            if (gesture.velocity(in: self.view).x == 0.0 && CGFloat(originalSideHorizontalConstraint) + location.x - CGFloat(originX) < sizeMenuWidth * 0.5) || gesture.velocity(in: self.view).x < 0.0
             {
                 sideMenuHorizontalOffset.constant = 0.0
             }
@@ -220,7 +220,7 @@ extension WDViewController
                 show = true
             }
         case .RightMenu:
-            if CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5
+            if (gesture.velocity(in: self.view).x == 0.0 && CGFloat(-originalSideHorizontalConstraint) + CGFloat(originX) - location.x < sizeMenuWidth * 0.5) || gesture.velocity(in: self.view).x > 0.0
             {
                 sideMenuHorizontalOffset.constant = 0.0
             }
@@ -231,7 +231,7 @@ extension WDViewController
             }
         }
         
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.15, animations: {
             self.view.layoutIfNeeded()
             self.transformMainContentView()
         }, completion: { finished in

@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "WDViewController.handleScreenEdge(_:):WDViewControllerGestureExtension.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "gestureRecognizer.velocity(in: self.view).x">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "WDViewController.addSideMenu() -&gt; ():WDViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -17,7 +25,7 @@
                value = "sizeMenuHeight">
             </PersistentString>
             <PersistentString
-               value = "originY">
+               value = "originalSideTopConstraint">
             </PersistentString>
             <PersistentString
                value = "sideMenuTopOffset.constant">
@@ -26,7 +34,7 @@
                value = "max(min(sizeMenuHeight, CGFloat(originalSideTopConstraint) + location.y - CGFloat(originY)),0.0)">
             </PersistentString>
             <PersistentString
-               value = "originalSideTopConstraint">
+               value = "originY">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -45,10 +53,10 @@
                value = "gestureRecognizer.location(in: mainView)">
             </PersistentString>
             <PersistentString
-               value = "mainView.frame">
+               value = "gestureRecognizer.view.subviews">
             </PersistentString>
             <PersistentString
-               value = "gestureRecognizer.view.subviews">
+               value = "mainView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

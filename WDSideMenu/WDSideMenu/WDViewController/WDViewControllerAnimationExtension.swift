@@ -24,11 +24,11 @@ extension WDViewController
             switch menuSide
             {
             case .LeftMenu:
-                currentScaleFactor = 1.0 - fabs(self.sideMenuHorizontalOffset.constant)/self.sizeMenuWidth * scaleFactor
+                currentScaleFactor = 1.0 - abs(self.sideMenuHorizontalOffset.constant)/self.sizeMenuWidth * scaleFactor
                 translationFactor = (1.0 - currentScaleFactor) * Constants.SCREEN_WIDTH * 0.5
                 t = t.translatedBy(x: -translationFactor, y: 0)
             case .RightMenu:
-                currentScaleFactor = 1.0 - fabs(self.sideMenuHorizontalOffset.constant)/self.sizeMenuWidth * scaleFactor
+                currentScaleFactor = 1.0 - abs(self.sideMenuHorizontalOffset.constant)/self.sizeMenuWidth * scaleFactor
                 translationFactor = (1.0 - currentScaleFactor) * Constants.SCREEN_WIDTH * 0.5
                 t = t.translatedBy(x: translationFactor, y: 0)
             }
@@ -81,7 +81,7 @@ extension WDViewController
         if !animationInProgress
         {
             animationInProgress = true
-            UIView.animate(withDuration: 0.25, animations: {
+            UIView.animate(withDuration: 0.15, animations: {
                 self.view.layoutIfNeeded()
                 self.transformMainContentView()
             }, completion: { finished in

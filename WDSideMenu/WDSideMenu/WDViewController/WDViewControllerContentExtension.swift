@@ -55,7 +55,7 @@ extension WDViewController
         self.mainContentViewController = self.getMainViewController()
         if let controller = self.mainContentViewController
         {
-            addChildViewController(controller)
+            addChild(controller)
             controller.view.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(controller.view)
             self.mainView = controller.view
@@ -79,7 +79,7 @@ extension WDViewController
                 view.addConstraint(NSLayoutConstraint(item: self.mainView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
             }
             
-            controller.didMove(toParentViewController: self)
+            controller.didMove(toParent: self)
         }
     }
     
@@ -88,7 +88,7 @@ extension WDViewController
         self.sideViewController = self.getSideMenuViewController()
         if let controller = self.sideViewController
         {
-            addChildViewController(controller)
+            addChild(controller)
             controller.view.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(controller.view)
             self.sideView = controller.view
@@ -132,7 +132,7 @@ extension WDViewController
                 view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
                 view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0))
             }
-            controller.didMove(toParentViewController: self)
+            controller.didMove(toParent: self)
         }
         
     }
