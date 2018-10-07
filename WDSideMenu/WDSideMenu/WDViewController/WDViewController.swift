@@ -59,7 +59,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     var menuSide:SideMenuSide = .LeftMenu
     var sideMenuRelativePosition:SideMenuRelativePosition = .StickedToMainView
     var animationInProgress = false
-    var sideViewHasFullWidth: Bool = false
+    
     
     open var addShadowToTopView:Bool = true
     open var sideMenuType:SideMenuType = .LeftMenuStickedToMainView
@@ -69,6 +69,7 @@ open class WDViewController: UIViewController, UIGestureRecognizerDelegate {
     open var sideMenuDelegate:WDSideMenuDelegate! = nil
     open var resizeMainContentView:Bool = false
     open var scaleFactor:CGFloat = 1.0
+    open var sideViewHasFullWidth: Bool = false
     
     
     override open func viewDidLoad() {
