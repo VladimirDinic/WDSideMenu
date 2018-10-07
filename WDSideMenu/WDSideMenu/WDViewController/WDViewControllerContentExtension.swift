@@ -92,7 +92,11 @@ extension WDViewController
             controller.view.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(controller.view)
             self.sideView = controller.view
-            view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: sizeMenuWidth))
+            if sideViewHasFullWidth {
+                view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1, constant: 0.0))
+            } else {
+                view.addConstraint(NSLayoutConstraint(item: self.sideView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1, constant: sizeMenuWidth))
+            }
             switch sideMenuRelativePosition
             {
             case .StickedToMainView:

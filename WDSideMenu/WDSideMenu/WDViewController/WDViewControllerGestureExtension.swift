@@ -167,19 +167,6 @@ extension WDViewController
         }
         if let sideMenuHorizontalOffset = self.sideMenuHorizontalOffset, let sideMenuVerticalOffset = self.sideMenuVerticalOffset {
             let location = gestureRecognizer.location(in: self.view)
-            guard
-                let mainView = self.mainView,
-                mainView.frame.contains(location) else {
-                    switch gestureRecognizer.state {
-                    case .ended:
-                        if panningSideMenuInProgress {
-                            endedGesture(gesture: gestureRecognizer, location: location)
-                        }
-                    default:
-                        print("Do nothing")
-                    }
-                    return
-            }
             switch gestureRecognizer.state {
             case .began:
                 panningSideMenuInProgress = true

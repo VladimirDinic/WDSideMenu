@@ -36,7 +36,7 @@ Download this project and add WDViewController.swift file to your project
 ```Ruby
 target '<TargetName>' do
     use_frameworks!
-    pod 'WDSideMenu', ' ~> 1.0.4'
+    pod 'WDSideMenu', ' ~> 1.1.0'
 end
 ```
 # Usage
